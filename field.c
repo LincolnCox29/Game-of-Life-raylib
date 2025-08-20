@@ -3,7 +3,7 @@
 #include "malloc.h"
 #include "string.h"
 #include "field.h"
-#include "raylib.h"
+#include "include/raylib.h"
 
 #define CELL_SIZE 8
 

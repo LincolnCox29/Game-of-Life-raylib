@@ -4,7 +4,7 @@
 
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "raylib.lib")
-#include "raylib.h"
+#include "include/raylib.h"
 
 #define FIELD_SWAP_BUFFER(buffer, field)    \
 {                                           \
@@ -56,19 +56,20 @@ int main()
 
 		drawField(field);
 
-		if (man.isRun)
-		{
-			nextField(field, buffer);
-			FIELD_SWAP_BUFFER(buffer, field);
-			WaitTime(0.3);
-		}
-		else if (man.isCellChanged)
+		if (man.isCellChanged && !man.isRun)
 		{
 			changeCell(field);
 			man.isCellChanged = false;
 		}
 
 		EndDrawing();
+
+		if (man.isRun)
+		{
+			nextField(field, buffer);
+			FIELD_SWAP_BUFFER(buffer, field);
+			WaitTime(0.3);
+		}
 	}
 	freeField(field);
 	return 0;
